@@ -16,13 +16,17 @@ class PostList(ListView): #(template>post_list : context>post_list or object_lis
     model = Post
 
 
-'''
-def Post_Detail(request,post_id):
-    data = Post.objects.get(id=post_id)
-    return render(request,'post_detail.html',{'post':data})
-'''
-class PostDetail(DetailView):
-    model = Post
+
+def Post_Detail(request,pk):
+    data = Post.objects.get(id=pk)
+    return render(request,'blog/post_detail.html',{'post':data})
+
+#class PostDetail(DetailView):
+#   model = Post
+
+
+def add_comment(request):
+    pass
 
 
 
