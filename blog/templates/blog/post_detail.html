@@ -7,3 +7,19 @@
 <p>{{post.tags}}</p>
 <p>{{post.author}}</p>
 <img src="{{post.img.url}}" alt="">
+<hr>
+<h3> Comments </h3>
+<ul>
+    {% for comment in post_comments %}
+      <li>
+        <h5> {{comment.user}} - {{comment.Comment}} - {{comment.create_at}} </h5>
+      </li>
+    {% endfor %}
+</ul>
+<hr>
+<h3> Add New Comment </h3>
+<form method="post">
+    {% csrf_token %}
+    {{form}}
+    <input type="submit" value="Add New Comment">
+</form>
