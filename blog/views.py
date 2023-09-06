@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render , redirect
 from .models import Post
 from .forms import PostForm
 # Create your views here.
@@ -18,6 +18,7 @@ def New_Post(request):
         form = PostForm(request.POST,request.FILES)
         if form.is_valid():
             form.save()
+            return redirect('/blog')
     else:
         form = PostForm()
     return render(request,'new_post.html',{'form':form})
