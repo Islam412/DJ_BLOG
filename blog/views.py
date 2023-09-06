@@ -27,7 +27,17 @@ def New_Post(request):
 
 
 def Edit_Post(request,post_id):
-    pass
+    data = Post.objects.get(id=post_id)
+    if request.method == 'POST':
+        form = PostForm(request.POST,request.FILES,instance=data)
+        if form.is_valid():
+            myform = form.save(commit=False)
+            myform.author = request.user
+            myform.save()
+            return redirect('/blog')
+    else:
+        form = PostForm(instance=data) #instance بتعامل مع داتا كذا
+    return render(request,'edit_post.html',{'form':form})
 
 
 def Delete_Post(request,post_id):
