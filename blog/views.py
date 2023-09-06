@@ -41,4 +41,6 @@ def Edit_Post(request,post_id):
 
 
 def Delete_Post(request,post_id):
-    pass
+    data = Post.objects.get(id=post_id)
+    data.delete()
+    return redirect('/blog')

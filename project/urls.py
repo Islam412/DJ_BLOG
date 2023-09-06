@@ -27,7 +27,7 @@ urlpatterns = [
     path('blog/new' , New_Post),
     path('blog/<int:post_id>' , Post_Detail),
     path('blog/<int:post_id>/edit' , Edit_Post),
-    path('blog/<int:post_id>' , Delete_Post),
+    path('blog/<int:post_id>/delete' , Delete_Post),
 
 ]
 
