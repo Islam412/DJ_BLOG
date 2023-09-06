@@ -75,20 +75,3 @@ def Delete_Post(request,post_id):
 class PostDelete(DeleteView):
     model = Post
     success_url = '/blog'
-
-
-
-'''
-url for def>
-    from blog.views import Post_List ,Post_Detail ,New_Post ,Edit_Post , Delete_Post
-    urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('blog/' , Post_List),
-    path('blog/new' , New_Post),
-    path('blog/<int:post_id>' , Post_Detail),
-    path('blog/<int:post_id>/edit' , Edit_Post),
-    path('blog/<int:post_id>/delete' , Delete_Post),
-
-]
- template old name
-'''
