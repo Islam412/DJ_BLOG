@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'taggit',
-    'django_summernote', 
+    'django_summernote',
+    'django_bootstrap5',
     'blog',
 ]
 

@@ -1,31 +1,55 @@
-<h3>
-    {{post}}
-</h3>
-
-<p>{{post.content|safe}}</p>
-<p>{{post.create_date}}</p>
-<p>{{post.author}}</p>
-
-<ul>
-  {% for tag in post.tags.all %}
-    <li>{{ tag }}</li>
-  {% endfor %}
-</ul>
-
-<img src="{{post.img.url}}" alt="">
-<hr>
-<h3> Comments </h3>
-<ul>
-    {% for comment in post_comments %}
-      <li>
-        <h5> {{comment.user}} - {{comment.Comment}} - {{comment.create_at}} </h5>
-      </li>
-    {% endfor %}
-</ul>
-<hr>
-<h3> Add New Comment </h3>
-<form method="post">
-    {% csrf_token %}
-    {{form}}
-    <input type="submit" value="Add New Comment">
-</form>
+{% load django_bootstrap5 %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/css/bootstrap.min.css" integrity="sha512-Z/def5z5u2aR89OuzYcxmDJ0Bnd5V1cKqBEbvLOiUNWdg9PQeXVvXLI90SE4QOHGlfLqUnDNVAYyZi8UwUTmWQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/blog">Medium</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <a class="btn btn-info me-2" href="/blog/new">Create New Post</a>
+          </div>
+        </div>
+      </nav>
+      <div class="container mt-5">
+        <div class="row py-5">
+                <div class="col-lg-8 mx-auto">
+                  <img src="{{post.img.url}}" alt="">
+                  <h3>
+                    {{post}}
+                </h3>
+                <p>{{post.create_date}}</p>
+                <p>{{post.author}}</p>
+                <ul>
+                  {% for tag in post.tags.all %}
+                    <li>{{ tag }}</li>
+                  {% endfor %}
+                </ul>
+                <p>{{post.content|safe}}</p>
+                <hr>
+                <h3> Comments </h3>
+                <ul>
+                    {% for comment in post_comments %}
+                      <li>
+                        <h5> {{comment.user}} - {{comment.Comment}} - {{comment.create_at}} </h5>
+                      </li>
+                    {% endfor %}
+                </ul>
+                <hr>
+                <h3> Add New Comment </h3>
+                <form method="post">
+                    {% csrf_token %}
+                    {% bootstrap_form form %}
+                    {% bootstrap_button button_type="submit" content="Add New Comment" %}
+                </form>
+                </div>
+        </div>
+      </div>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    </body>
+</html>
